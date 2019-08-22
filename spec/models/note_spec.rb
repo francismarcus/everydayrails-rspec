@@ -38,6 +38,7 @@ RSpec.describe Note, type: :model do
       )
     end
 
+    # use context instead of describe inside of a describe block
     context "when a match is found" do
       it "returns notes that match the term" do
         expect(Note.search("first")).to include(@note1, @note3)
