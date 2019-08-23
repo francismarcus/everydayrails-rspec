@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+it "generates associated data from the factory" do
+  note = FactoryBot.create(:note)
+  puts "This notes project is #{note.project.inspect}"
+  puts "This notes user is #{note.user.inspect}"
+end
+
 
   before do
     @user = User.create(
