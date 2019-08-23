@@ -1,25 +1,23 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Note, type: :model do
-it "generates associated data from the factory" do
-  note = FactoryBot.create(:note)
-  puts "This notes project is #{note.project.inspect}"
-  puts "This notes user is #{note.user.inspect}"
-end
-
+  it "generates associated data from the factory" do
+    note = FactoryBot.create(:note)
+    puts "This notes project is #{note.project.inspect}"
+    puts "This notes user is #{note.user.inspect}"
+  end
 
   before do
     @user = User.create(
       first_name: "Marcus",
       last_name: "Magnusson",
       email: "marmag@bredband2.se",
-      password: "myPassword"
+      password: "myPassword",
     )
 
     @project = @user.projects.create(
       name: "Test project",
     )
-
   end
 
   it "is invalid wihtout a message" do
@@ -51,11 +49,10 @@ end
       end
     end
 
-
     context "when no match is found" do
       it "returns empty collection" do
         expect(Note.search("message")).to be_empty
       end
     end
   end
-  end
+end
